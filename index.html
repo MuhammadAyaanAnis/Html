@@ -1,22 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradient Boxes</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Boxes</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* Optional styling */
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .box {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      cursor: pointer;
+      background: linear-gradient(45deg, #f06, yellow);
+    }
+    .box:hover {
+      background: linear-gradient(45deg, yellow, #f06);
+    }
+    .content {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f4f4f4;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="box">
-            <h2>Task 1</h2>
-        </div>
-        <div class="box">
-            <h2>Task 2</h2>
-        </div>
-        <div class="box">
-            <h2>Task 3</h2>
-        </div>
+
+  <div class="container">
+    <div class="box" onclick="showContent('task1')">
+      <h2>Task 1</h2>
     </div>
+    <div class="box" onclick="showContent('task2')">
+      <h2>Task 2</h2>
+    </div>
+    <div class="box" onclick="showContent('task3')">
+      <h2>Task 3</h2>
+    </div>
+  </div>
+
+  <!-- Content boxes for each task -->
+  <div class="content" id="task1">
+    <h3>SDG 11: Sustainable Cities and Communities</h3>
+    <p>The United Nations Sustainable Development Goal (SDG) 11 focuses on making cities and communities inclusive, safe, resilient, and sustainable. This goal recognizes the rapid urbanization of the world and the challenges it brings, such as overcrowding, pollution, lack of housing, and strained infrastructure. By addressing these challenges, SDG 11 aims to create cities where everyone can live with dignity, security, and access to essential services.</p>
+    <p>One of the main objectives of SDG 11 is to ensure access to affordable housing and basic services for all, especially for marginalized groups. Many people in urban areas live in slums with poor living conditions. This goal emphasizes building resilient housing and upgrading slums to provide better opportunities for these populations.</p>
+    <p>Another key focus is sustainable transportation. Efficient public transport systems reduce traffic congestion, improve air quality, and provide an affordable way for people to move around cities. This includes promoting walking, cycling, and other environmentally friendly modes of transportation.</p>
+  </div>
+
+  <div class="content" id="task2">
+    <h3>Task 2 Content</h3>
+    <p>Content for Task 2 goes here...</p>
+  </div>
+
+  <div class="content" id="task3">
+    <h3>Task 3 Content</h3>
+    <p>Content for Task 3 goes here...</p>
+  </div>
+
+  <script>
+    // JavaScript to handle the display of content on click
+    function showContent(task) {
+      // Hide all content sections
+      const contentSections = document.querySelectorAll('.content');
+      contentSections.forEach(section => section.style.display = 'none');
+
+      // Show the clicked task's content
+      const selectedTask = document.getElementById(task);
+      if (selectedTask) {
+        selectedTask.style.display = 'block';
+      }
+    }
+  </script>
+
 </body>
 </html>
