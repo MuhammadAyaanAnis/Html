@@ -19,24 +19,25 @@
       border-radius: 10px;
       cursor: pointer;
       background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(255, 255, 0, 0.5)); /* Faded colors */
-      transition: transform 0.3s ease, background 0.5s ease; /* Smooth hover and click transition */
+      background-size: 200% 200%; /* Large background to allow movement */
+      transition: transform 0.3s ease, background 0.3s ease; /* Smooth transition for background and scale */
     }
 
-    /* Add a dynamic moving orange color effect on hover */
-    @keyframes moveGradient {
+    /* Create a moving background effect */
+    @keyframes moveBackground {
       0% {
-        background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(255, 255, 0, 0.5));
+        background-position: 0% 0%;
       }
       50% {
-        background: linear-gradient(45deg, rgba(255, 165, 0, 0.7), rgba(255, 255, 0, 0.7)); /* More orange */
+        background-position: 100% 100%;
       }
       100% {
-        background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(255, 255, 0, 0.5));
+        background-position: 0% 0%;
       }
     }
 
     .box:hover {
-      animation: moveGradient 1s ease-in-out infinite; /* Smooth moving gradient */
+      animation: moveBackground 2s ease infinite; /* Smooth moving background */
       transform: scale(1.05); /* Slightly enlarge on hover */
     }
 
@@ -49,8 +50,8 @@
       border-radius: 10px;
       background-color: #f4f4f4;
       opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth transition for fade-in and pop-up effect */
+      transform: scale(0.8); /* Start smaller for pop-up effect */
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth fade and pop-up transition */
     }
 
     /* When the content is shown, make it visible with fade-in and pop-up animation */
