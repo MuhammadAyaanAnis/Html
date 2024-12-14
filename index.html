@@ -6,21 +6,28 @@
   <title>Gradient Boxes</title>
   <link rel="stylesheet" href="index.css">
   <style>
-    /* Optional styling */
+    /* Container with a gap between boxes */
     .container {
       display: flex;
       gap: 20px;
     }
+
+    /* Box styling with faded gradient and hover animation */
     .box {
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 10px;
       cursor: pointer;
-      background: linear-gradient(45deg, #f06, yellow);
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(255, 255, 0, 0.5)); /* Faded colors */
+      transition: transform 0.3s ease, background 0.3s ease; /* Smooth hover and click transition */
     }
+
     .box:hover {
-      background: linear-gradient(45deg, yellow, #f06);
+      background: linear-gradient(45deg, rgba(255, 255, 0, 0.7), rgba(255, 0, 0, 0.7)); /* Brighter colors on hover */
+      transform: scale(1.05); /* Slightly enlarge on hover */
     }
+
+    /* Hide content initially */
     .content {
       display: none;
       margin-top: 20px;
@@ -28,6 +35,14 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       background-color: #f4f4f4;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out; /* Smooth fade-in effect */
+    }
+
+    /* When the content is shown, make it visible with fade-in */
+    .content.visible {
+      display: block;
+      opacity: 1;
     }
   </style>
 </head>
@@ -68,12 +83,12 @@
     function showContent(task) {
       // Hide all content sections
       const contentSections = document.querySelectorAll('.content');
-      contentSections.forEach(section => section.style.display = 'none');
+      contentSections.forEach(section => section.classList.remove('visible'));
 
-      // Show the clicked task's content
+      // Show the clicked task's content with fade-in effect
       const selectedTask = document.getElementById(task);
       if (selectedTask) {
-        selectedTask.style.display = 'block';
+        selectedTask.classList.add('visible');
       }
     }
   </script>
