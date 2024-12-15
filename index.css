@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(to bottom right, #4633ff, #11558e, #03055B);
+    background-image: linear-gradient(to bottom right, #4633ff, #218dd8, #03055B);
     background-size: 200% 200%;
     animation: gradient 10s ease infinite;
     height: 100vh;
