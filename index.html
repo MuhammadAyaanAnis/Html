@@ -6,7 +6,15 @@
   <title>Gradient Boxes</title>
   <link rel="stylesheet" href="index.css">
   <style>
-    /* Container with a gap between boxes */
+    /* Main container for the boxes and content */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* Space between rows */
+    }
+
+    /* Container for the boxes */
     .container {
       display: flex;
       gap: 20px;
@@ -21,7 +29,7 @@
       background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(255, 255, 0, 0.5)); /* Faded colors */
       background-size: 200% 200%; /* Large background to allow movement */
       transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition */
-      box-shadow: 4px 4px 15px rgba(255, 140, 0, 0.5); /* Enhanced shadow for visibility */
+      box-shadow: 4px 4px 15px rgba(255, 140, 0, 0.5); /* Default shadow */
     }
 
     /* Create a moving background effect */
@@ -40,8 +48,14 @@
     .box:hover, .box:active {
       animation: moveBackground 2s ease infinite; /* Smooth moving background */
       transform: scale(1.05); /* Slightly enlarge on hover */
-      box-shadow: none; /* Remove shadow */
-      border: 4px solid rgba(255, 255, 255, 0.9); /* White glowing border effect */
+      box-shadow: 0 0 25px 15px rgba(255, 255, 255, 0.8); /* White glowing effect */
+      border: 2px solid rgba(255, 255, 255, 0.9); /* Subtle white border */
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 255, 0, 0.7)); /* Slightly brighter gradient on hover */
+    }
+
+    .box h2 {
+      color: white; /* White text */
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* White glowing effect on text */
     }
 
     /* Hide content initially */
@@ -55,6 +69,7 @@
       opacity: 0;
       transform: scale(0.8); /* Start smaller for pop-up effect */
       transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Smooth fade and pop-up transition */
+      width: 80%; /* Ensure the content stretches proportionally */
     }
 
     /* When the content is shown, make it visible with fade-in and pop-up animation */
@@ -67,34 +82,35 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="box" onclick="showContent('task1')">
-      <h2>Task 1</h2>
+  <div class="main-container">
+    <!-- Container with horizontally aligned boxes -->
+    <div class="container">
+      <div class="box" onclick="showContent('task1')">
+        <h2>Task 1</h2>
+      </div>
+      <div class="box" onclick="showContent('task2')">
+        <h2>Task 2</h2>
+      </div>
+      <div class="box" onclick="showContent('task3')">
+        <h2>Task 3</h2>
+      </div>
     </div>
-    <div class="box" onclick="showContent('task2')">
-      <h2>Task 2</h2>
+
+    <!-- Content boxes for each task -->
+    <div class="content" id="task1">
+      <h3>SDG 11: Sustainable Cities and Communities</h3>
+      <p>The United Nations Sustainable Development Goal (SDG) 11 focuses on making cities and communities inclusive, safe, resilient, and sustainable. This goal recognizes the rapid urbanization of the world and the challenges it brings, such as overcrowding, pollution, lack of housing, and strained infrastructure.</p>
     </div>
-    <div class="box" onclick="showContent('task3')">
-      <h2>Task 3</h2>
+
+    <div class="content" id="task2">
+      <h3>Task 2 Content</h3>
+      <p>Content for Task 2 goes here...</p>
     </div>
-  </div>
 
-  <!-- Content boxes for each task -->
-  <div class="content" id="task1">
-    <h3>SDG 11: Sustainable Cities and Communities</h3>
-    <p>The United Nations Sustainable Development Goal (SDG) 11 focuses on making cities and communities inclusive, safe, resilient, and sustainable. This goal recognizes the rapid urbanization of the world and the challenges it brings, such as overcrowding, pollution, lack of housing, and strained infrastructure. By addressing these challenges, SDG 11 aims to create cities where everyone can live with dignity, security, and access to essential services.</p>
-    <p>One of the main objectives of SDG 11 is to ensure access to affordable housing and basic services for all, especially for marginalized groups. Many people in urban areas live in slums with poor living conditions. This goal emphasizes building resilient housing and upgrading slums to provide better opportunities for these populations.</p>
-    <p>Another key focus is sustainable transportation. Efficient public transport systems reduce traffic congestion, improve air quality, and provide an affordable way for people to move around cities. This includes promoting walking, cycling, and other environmentally friendly modes of transportation.</p>
-  </div>
-
-  <div class="content" id="task2">
-    <h3>Task 2 Content</h3>
-    <p>Content for Task 2 goes here...</p>
-  </div>
-
-  <div class="content" id="task3">
-    <h3>Task 3 Content</h3>
-    <p>Content for Task 3 goes here...</p>
+    <div class="content" id="task3">
+      <h3>Task 3 Content</h3>
+      <p>Content for Task 3 goes here...</p>
+    </div>
   </div>
 
   <script>
